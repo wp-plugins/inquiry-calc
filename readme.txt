@@ -12,7 +12,9 @@ Perfect for user inquiries about the cost of a service or product. Calculates th
 
 == Description ==
 
-[Live Demo](http://ghazale.co.nf/index.php/inquiry-calc-live-demo/)
+**[Live Demo](http://ghazale.co.nf/index.php/inquiry-calc-live-demo/)**
+
+**Online Cost Inquiry System**
 
 Perfect for user inquiries about the cost of service or product. Very lightweight. Calculates the final cost immediately in real time based on the fees you have set in the options. It emails the final cost/cost-breakdown to user upon request. And it also updates admin about new inquiries as well. Admin can see what inquiries have been made and also can see what the user has selected and what the cost structure has been when the user used the inquiry calculator on your website.
 
