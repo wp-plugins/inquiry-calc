@@ -83,11 +83,15 @@ Based on your server settings, sometimes you need to include the "http" at the f
 
 
 == Changelog ==
+= 1.1 =
+* Bug Fix
 
 = 1.0 =
 * First Release
 
 == Upgrade Notice ==
+= 1.1 =
+Please upgrade to the latest version. The plugin was sticking above the content in the previous version. It is fixed in the new version.
 
 = 1.0 =
 First Release
