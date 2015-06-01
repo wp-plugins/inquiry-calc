@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: Inquiry Calc
-Plugin URI: http://ghazale.co.nf/index.php/2015/05/20/inquiry-calc-plugin/
+Plugin URI:  http://ghazale.co.nf/index.php/2015/05/20/inquiry-calc-plugin/
 Description: Perfect for user inquiries about the cost of service or product. Calculates the final cost immediately in real time based on the fees you have set in the options. It emails the final cost/cost-breakdown to user upon request. And it also updates admin about new inquiries as well. Admin can see what inquiries have been made and also can see what the user has selected and what the cost structure has been when the user used the inquiry calculator on your website.
 Author: Ghazale Shirazi
-Version: 1.0
+Version: 1.1
 Author URI: http://ghazale.co.nf
 
 
@@ -411,53 +411,46 @@ function ghazale_inquiry_frontend_shortcode(){
     $questions = $wpdb-> get_results($questions_query,ARRAY_A);
     $conditions_query = "SELECT * FROM {$c_table} ORDER BY id ASC";
     $conditions = $wpdb->get_results($conditions_query,ARRAY_A);
-    ?>
-    <?php echo "<div style='background-color: #06B9FD; color: #fff; line-height: 2em;border-left: 5px solid #00008b; font-size: 14px'>" . ghazale_inquiry_update_message() . "</div><br>"; ?>
-    <br>
-    <img src="<?php echo plugins_url('images/back28.png',__FILE__); ?>" id="ghazale_inquiry_go_left" style="cursor:pointer;"> <img src="<?php echo plugins_url('images/right127.png',__FILE__); ?>" id="ghazale_inquiry_go_right" style="cursor:pointer; margin-left: 372px">
-    <?php
+
+    $output = "<div style='background-color: #06B9FD; color: #fff; line-height: 2em;border-left: 5px solid #00008b; font-size: 14px'>" . ghazale_inquiry_update_message() . "</div><br>";
+    $output .= "<br>";
+    $output .= "<img src=\"".plugins_url('images/back28.png',__FILE__)."\" id=\"ghazale_inquiry_go_left\" style=\"cursor:pointer;\"> <img src=\"". plugins_url('images/right127.png',__FILE__)." \" id=\"ghazale_inquiry_go_right\" style=\"cursor:pointer; margin-left: 372px\">";
     if(trim(get_option('ghazale_inquiry_min_cost'))) {
-        ?>
-        <br>Minimum Flat Cost: <?php echo get_option('ghazale_inquiry_currency'); ?><strong class="ghazale_inquiry_min_flat_cost"> <?php echo esc_attr(get_option('ghazale_inquiry_min_cost')); ?></strong>
-    <?php
+
+        $output .= "<br>Minimum Flat Cost:" . get_option('ghazale_inquiry_currency') ."<strong class=\"ghazale_inquiry_min_flat_cost\"> ". esc_attr(get_option('ghazale_inquiry_min_cost'))."</strong>";
     }
-    ?>
-    <br><strong>Total Cost: </strong><?php echo get_option('ghazale_inquiry_currency'); ?> <strong class="ghazale_inquiry_final_cost"><?php
+    $output .= "<br><strong>Total Cost: </strong>" . get_option('ghazale_inquiry_currency')."<strong class=\"ghazale_inquiry_final_cost\">";
         if(trim(get_option('ghazale_inquiry_min_cost'))) {
-            echo esc_attr(get_option('ghazale_inquiry_min_cost'));
+            $output .= esc_attr(get_option('ghazale_inquiry_min_cost'));
         }else{
-            echo "0";
+            $output .= "0";
         }
-        ?></strong>
+        $output .="</strong>";
 
-    <form action="" method="post" id="ghazale_inquiry_send_cost_breakdown">
-    <div class="ghazale_question_box">
+    $output .= "<form action=\"\" method=\"post\" id=\"ghazale_inquiry_send_cost_breakdown\">
+    <div class=\"ghazale_question_box\">
 
-    <div>
+    <div>";
 
-    <?php
     if(count($questions)>0) {
         $ghazale_inquiry_questions = array();
         $ghazale_frontend_q_cost = array();
         foreach ($questions as $question) {
-            ?>
+            $output .= "<div class =\"ghazale_inquiry_q_and_c\">
+                <div class=\"ghazale_inquiry_questions\">";
 
-            <div class ="ghazale_inquiry_q_and_c">
-                <div class="ghazale_inquiry_questions">
-                    <?php
-                    echo "<div class='ghazale_frontend_q_cost' style='display: none'>" . trim(esc_attr($question['question_cost'])) ."</div>" ."<br>";
-                    echo trim(esc_attr($question['inquiry_question'])) . "<br><br>";
-                    ?>
-                    <div class="onoffswitch">
-                        <input type="checkbox" name="onoffswitch-q-<?php echo $question['id']; ?>" class="ghazale-q-onoffswitch-checkbox" id="q-myonoffswitch-<?php echo $question['id']; ?>">
-                        <label class="onoffswitch-label" for="q-myonoffswitch-<?php echo $question['id']; ?>">
-                            <span class="onoffswitch-inner"></span>
-                            <span class="onoffswitch-switch"></span>
+                    $output .= "<div class='ghazale_frontend_q_cost' style='display: none'>" . trim(esc_attr($question['question_cost'])) ."</div>" ."<br>";
+                    $output .= trim(esc_attr($question['inquiry_question'])) . "<br><br>";
+
+                    $output .= "<div class=\"onoffswitch\">
+                       <input type=\"checkbox\" name=\"onoffswitch-q-". $question['id'] ."\" class=\"ghazale-q-onoffswitch-checkbox\" id=\"q-myonoffswitch-". $question['id'] ."\">
+                       <label class=\"onoffswitch-label\" for=\"q-myonoffswitch-". $question['id']."\">
+                            <span class=\"onoffswitch-inner\"></span>
+                            <span class=\"onoffswitch-switch\"></span>
                         </label>
                     </div>
-                </div>
+                </div>";
 
-                <?php
                 if(isset($_POST["onoffswitch-q-" . $question['id']])) {
                     array_push($ghazale_inquiry_questions, trim(esc_attr($question['inquiry_question'])));
                     array_push($ghazale_frontend_q_cost, trim(esc_attr($question['question_cost'])));
@@ -466,25 +459,23 @@ function ghazale_inquiry_frontend_shortcode(){
                 if(count($conditions)>0){
                     $ghazale_inquiry_conditions = array();
                     $ghazale_frontend_c_cost = array();
-                    ?>
-                    <div class="ghazale_inquiry_conditions" style="display: none">
-                        <?php
+
+                   $output .= "<div class=\"ghazale_inquiry_conditions\" style=\"display: none\">";
+
                         foreach($conditions as $condition) {
 
                             if ($condition['question_id'] == $question['id']) {
 
-                                echo "<div class='ghazale_frontend_c_cost' style='display: none;'>" .trim(esc_attr($condition['condition_cost'])) ."</div>" ."<br>";
-                                echo trim(esc_attr($condition['inquiry_condition'])) . "<br><br>";
-                                ?>
-                                <div class="onoffswitch">
-                                    <input type="checkbox" name="onoffswitch-c-<?php echo $condition['id']; ?>" class="ghazale-c-onoffswitch-checkbox" id="c-myonoffswitch-<?php echo $condition['id']; ?>" >
-                                    <label class="onoffswitch-label" for="c-myonoffswitch-<?php echo $condition['id']; ?>">
-                                        <span class="onoffswitch-inner"></span>
-                                        <span class="onoffswitch-switch"></span>
-                                    </label>
-                                </div>
+                                $output .= "<div class='ghazale_frontend_c_cost' style='display: none;'>" .trim(esc_attr($condition['condition_cost'])) ."</div>" ."<br>";
+                                $output .= trim(esc_attr($condition['inquiry_condition'])) . "<br><br>";
 
-                            <?php
+                                $output .= "<div class=\"onoffswitch\">
+                                    <input type=\"checkbox\" name=\"onoffswitch-c-". $condition['id']."\" class=\"ghazale-c-onoffswitch-checkbox\" id=\"c-myonoffswitch-". $condition['id'] ."\" >
+                                    <label class=\"onoffswitch-label\" for=\"c-myonoffswitch-". $condition['id']."\">
+                                        <span class=\"onoffswitch-inner\"></span>
+                                        <span class=\"onoffswitch-switch\"></span>
+                                    </label>
+                                </div>";
 
                             }
                             if(isset($_POST["onoffswitch-c-{$condition['id']}"])) {
@@ -492,32 +483,23 @@ function ghazale_inquiry_frontend_shortcode(){
                                 array_push($ghazale_frontend_c_cost, trim(esc_attr($condition['condition_cost'])));
                             }
                         }
-                        ?>
-                    </div>
-                <?php
+                    $output .= "</div>";
                 }
-                ?>
-
-            </div>
-        <?php
+            $output .= "</div>";
         }
-        ?>
 
-        <div>
+        $output .= "<div>";
 
-            <p>Would you like to receive cost breakdown by email? <br>
-                <input type="checkbox" name="ghazale_inquiry_email_cost_breakdown" class="ghazale_inquiry_email_cost_breakdown" /> Yes </p>
-            <p class="ghazale_inquiry_user_email_field">Email: <input type="email" name="ghazale_inquiry_user_email" id="ghazale_inquiry_user_email" /><br><br><input type="submit" name="ghazale_inquiry_submit_user_email" value="Submit"></p>
+            $output .= "<p>Would you like to receive cost breakdown by email? <br>
+                <input type=\"checkbox\" name=\"ghazale_inquiry_email_cost_breakdown\" class=\"ghazale_inquiry_email_cost_breakdown\" /> Yes </p>
+            <p class=\"ghazale_inquiry_user_email_field\">Email: <input type=\"email\" name=\"ghazale_inquiry_user_email\" id=\"ghazale_inquiry_user_email\" /><br><br><input type=\"submit\" name=\"ghazale_inquiry_submit_user_email\" value=\"Submit\"></p>
 
         </div>
         </div>
         </div>
-        </form>
-    <?php
-
-
+        </form>";
     }
-
+    return $output;
 }
 add_shortcode('inquiry-calc','ghazale_inquiry_frontend_shortcode');
 
