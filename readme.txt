@@ -4,7 +4,7 @@ Donate link:
 Tags: calculator, inquiry, cost, confirmation email, real-time calculation, custom currency, flat cost calculator
 Requires at least: 3.0.1
 Tested up to: 4.2.2
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,9 +12,7 @@ Perfect for user inquiries about the cost of a service or product. Calculates th
 
 == Description ==
 
-**[Live Demo](http://ghazale.co.nf/index.php/inquiry-calc-live-demo/)**
-
-**Online Cost Inquiry System**
+[Live Demo](http://ghazale.co.nf/index.php/inquiry-calc-live-demo/)
 
 Perfect for user inquiries about the cost of service or product. Very lightweight. Calculates the final cost immediately in real time based on the fees you have set in the options. It emails the final cost/cost-breakdown to user upon request. And it also updates admin about new inquiries as well. Admin can see what inquiries have been made and also can see what the user has selected and what the cost structure has been when the user used the inquiry calculator on your website.
 
@@ -22,35 +20,35 @@ This is particularly useful when there are common inquiry questions about the co
 
 This plugin also includes the following features:
 
-*Ability to add conditional or unconditional questions
+* Ability to add conditional or unconditional questions
 
-*Add unlimited inquiry questions and their related conditions.
+* Add unlimited inquiry questions and their related conditions.
 
-*Add separate costs for each question or condition
+* Add separate costs for each question or condition
 
-*Edit or Delete the questions that you have already added
+* Edit or Delete the questions that you have already added
 
-*Use a custom currency of your choice
+* Use a custom currency of your choice
 
-*The option to have/ or not to have a minimum cost.
+* The option to have/ or not to have a minimum cost.
 
-*Custom Thank you page redirection
+* Custom Thank you page redirection
 
-*Option to inform admin if the user requested to receive the cost-breakdown by email.
+* Option to inform admin if the user requested to receive the cost-breakdown by email.
 
-*Admin will see the exact cost structure that the user has seen when he/she used the online inquiry system
+* Admin will see the exact cost structure that the user has seen when he/she used the online inquiry system
 
-*If the user chooses to receive the cost break-down by email, they will receive it in a nicely structured table in their email.
+* If the user chooses to receive the cost break-down by email, they will receive it in a nicely structured table in their email.
 
-*The plugin adds the cost in real-time (with no page refresh) when the user answers "Yes/No" to any of the questions.
+* The plugin adds the cost in real-time (with no page refresh) when the user answers "Yes/No" to any of the questions.
 
-*For the conditional questions; the conditions would only appear if the user answers "Yes" to the parent question, otherwise it won't show at all, so the user doesn't get confused.
+* For the conditional questions; the conditions would only appear if the user answers "Yes" to the parent question, otherwise it won't show at all, so the user doesn't get confused.
 
-*Ability to slide back and forth between the inquiry questions and change the answers.
+* Ability to slide back and forth between the inquiry questions and change the answers.
 
-*When the answers change, the total cost also gets updated accordingly in real-time.
+* When the answers change, the total cost also gets updated accordingly in real-time.
 
-*After you set up your settings and added your questions/conditions with their costs, just put the shortcode **[inquiry-calc]** on any post or page and you're ready to go.
+* After you set up your settings and added your questions/conditions with their costs, just put the shortcode **[inquiry-calc]** on any post or page and you're ready to go.
 
 == Installation ==
 
@@ -83,11 +81,15 @@ Based on your server settings, sometimes you need to include the "http" at the f
 
 
 == Changelog ==
+= 1.1 =
+* Bug Fix
 
 = 1.0 =
 * First Release
 
 == Upgrade Notice ==
+= 1.1 =
+Please upgrade to the latest version. The plugin was sticking above the content in the previous version. It is fixed in the new version.
 
 = 1.0 =
 First Release
