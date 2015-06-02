@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Inquiry Calc
-Plugin URI:  http://ghazale.co.nf/index.php/2015/05/20/inquiry-calc-plugin/
+Plugin URI:  http://ghazale.co.nf/inquiry-calc-plugin/
 Description: Perfect for user inquiries about the cost of service or product. Calculates the final cost immediately in real time based on the fees you have set in the options. It emails the final cost/cost-breakdown to user upon request. And it also updates admin about new inquiries as well. Admin can see what inquiries have been made and also can see what the user has selected and what the cost structure has been when the user used the inquiry calculator on your website.
 Author: Ghazale Shirazi
 Version: 1.1
