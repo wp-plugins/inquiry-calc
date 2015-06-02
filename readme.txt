@@ -12,7 +12,7 @@ Perfect for user inquiries about the cost of a service or product. Calculates th
 
 == Description ==
 
-**[Live Demo](http://ghazale.co.nf/index.php/inquiry-calc-live-demo/)**
+**[Live Demo](http://ghazale.co.nf/inquiry-calc-live-demo/)**
 
 **Online Cost Inquiry System**
 
